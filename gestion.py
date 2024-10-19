@@ -73,12 +73,14 @@ Elija una opcion:
         choice = input("Ingrese el numero de la opcion deseada:")
         
         if choice == '1':
+            #Opcion que lleva a poner el nombre del producto
             producto = input('Ingrese el nombre del producto:')
             productos = eval(r_file())
             # for i in productos:
             #     print(i)
             w_file1(f'\'{producto}\'')
         elif choice == '2':
+            #opcion que lleva a cambiar la cantidad de cierto producto.
             nombre = input('Ingrese el nombre del producto cuya cantidad desea cambiar:')
             lista = r_file()
             
