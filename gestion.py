@@ -2,10 +2,10 @@
 seguir = True
 
 #una funcion que crea un archivo
-def n_file():
+def n_file(texto):
     try:
         #abre un archivo de texto pero sobrescribe cualquier info
-        data = open("data.txt", "w")
+        data = open(f"{texto}.txt", "w")
     except:
         print('aiuda, llamen al inge')
     finally:
@@ -29,13 +29,13 @@ def w_file2(texto):
     finally:
         data.close()
 #funcion para leer un archivo
-def r_file():
+def r_file(text):
     try:
         #abre el archivo y devuelve el texto en el.
-        data = open('data.txt', 'r')
+        data = open(f'{text}.txt', 'r')
         return data.read()
     except FileNotFoundError:
-        n_file()
+        n_file(text)
     except SyntaxError:
         print('Porfavor ingrese datos al archivo antes de leerlo')
     finally:
@@ -91,7 +91,7 @@ Elija una opcion:
 1-Aumentar ingresos
 2-Agregar gastos
 ''')
-        n_file()
+        n_file('data')
         select = input('Ingrese el numero de la opcion deseada:')
     elif opcion == '3':
         print('El programa se cerro, adios!')
