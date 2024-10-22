@@ -2,10 +2,10 @@
 seguir = True
 
 #una funcion que crea un archivo
-def n_file(texto):
+def n_file():
     try:
         #abre un archivo de texto pero sobrescribe cualquier info
-        data = open(f"{texto}.txt", "w")
+        data = open("data.txt", "w")
     except:
         print('aiuda, llamen al inge')
     finally:
@@ -23,19 +23,19 @@ def w_file1(texto):
 def w_file2(texto):
     try:
         data = open("data.txt", "a")
-        data.write(texto)
+        data.write(f"{texto}")
     except:
         print('aiuda, llamen al inge')
     finally:
         data.close()
 #funcion para leer un archivo
-def r_file(text):
+def r_file():
     try:
         #abre el archivo y devuelve el texto en el.
-        data = open(f'{text}.txt', 'r')
+        data = open('data.txt', 'r')
         return data.read()
     except FileNotFoundError:
-        n_file(text)
+        n_file()
     except SyntaxError:
         print('Porfavor ingrese datos al archivo antes de leerlo')
     finally:
@@ -75,23 +75,22 @@ Elija una opcion:
         if choice == '1':
             #Opcion que lleva a poner el nombre del producto
             producto = input('Ingrese el nombre del producto:')
-            productos = eval(r_file())
-            # for i in productos:
-            #     print(i)
-            w_file1(f'\'{producto}\'')
+            productos = r_file()
+            products_lst = eval(productos)
+            w_file1(producto)
+            print(products_lst)
         elif choice == '2':
             #opcion que lleva a cambiar la cantidad de cierto producto.
             nombre = input('Ingrese el nombre del producto cuya cantidad desea cambiar:')
             lista = r_file()
-            
-            cantidad = input('Ingrese la nueva cantidad del producto')
     #Lleva a finanzas para registrar ingresos o gastos monetarios
     elif opcion == '2':
-        print('''
-1-Aumentar ingresos
-2-Agregar gastos
-''')
-        n_file('data')
+        print(
+                '''
+                1-Aumentar ingresos
+                2-Agregar gastos
+                ''')
+        n_file('monney')
         select = input('Ingrese el numero de la opcion deseada:')
     elif opcion == '3':
         print('El programa se cerro, adios!')
@@ -99,3 +98,5 @@ Elija una opcion:
         seguir = False
     elif opcion == '4':
         print(r_file())
+
+
